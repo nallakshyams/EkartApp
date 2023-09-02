@@ -5,6 +5,7 @@ import {
   Pressable,
   StyleSheet,
   ActivityIndicator,
+  StatusBar,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {COLOURS} from '../data/data';
@@ -120,6 +121,9 @@ const Login = ({navigation}) => {
   };
   return (
     <View style={styles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={COLOURS.backgroundLight}></StatusBar>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}

@@ -98,7 +98,7 @@ const ProductInfo = ({route, navigation}) => {
             backgroundColor: COLOURS.backgroundLight,
             justifyContent: 'center',
             alignItems: 'center',
-            marginTop: 8,
+            marginTop: 0,
             marginBottom: 4,
             paddingBottom: 4,
           }}>
