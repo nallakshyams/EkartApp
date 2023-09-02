@@ -5,30 +5,30 @@ import {
   Pressable,
   StyleSheet,
   ActivityIndicator,
-} from "react-native";
-import React, { useEffect, useState } from "react";
-import { COLOURS } from "../data/data";
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {COLOURS} from '../data/data';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-} from "firebase/auth";
-import auth from "../firebase/myfirebase";
+} from 'firebase/auth';
+import auth from '../firebase/myfirebase';
 
-const Login = ({ navigation }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const Login = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      navigation.addListener("focus", () => {
-        setEmail("");
-        setPassword("");
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      navigation.addListener('focus', () => {
+        setEmail('');
+        setPassword('');
       });
       if (user) {
-        navigation.navigate("Home");
+        navigation.navigate('Home');
       } else {
-        console.log("signed out successfully");
+        console.log('signed out successfully');
       }
     });
 
@@ -47,38 +47,38 @@ const Login = ({ navigation }) => {
 
   const validateInput = () => {
     if (!validateEmail() && !validatePassword()) {
-      return "Invalid email format and password length should be minimum 4 characters!!";
+      return 'Invalid email format and password length should be minimum 4 characters!!';
     } else if (!validateEmail()) {
-      return "Invalid email format!!";
+      return 'Invalid email format!!';
     } else if (!validatePassword()) {
-      return "Password length should be minimum 4 characters!!";
+      return 'Password length should be minimum 4 characters!!';
     }
-    return "valid";
+    return 'valid';
   };
 
   const handleRegister = () => {
     const isValid = validateInput();
-    if (!(isValid === "valid")) {
+    if (!(isValid === 'valid')) {
       return alert(isValid);
     }
     setLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
-      .then((response) => {
-        console.log("registered user", response.user);
+      .then(response => {
+        console.log('registered user', response.user);
       })
-      .catch((err) => {
+      .catch(err => {
         switch (err.code) {
-          case "auth/email-already-in-use":
-            alert("Email address is already in use.");
+          case 'auth/email-already-in-use':
+            alert('Email address is already in use.');
             break;
-          case "auth/invalid-email":
-            alert("Invalid email address.");
+          case 'auth/invalid-email':
+            alert('Invalid email address.');
             break;
-          case "auth/weak-password":
-            alert("Password is too weak.");
+          case 'auth/weak-password':
+            alert('Password is too weak.');
             break;
           default:
-            alert("An error occurred. Please try again later.");
+            alert('An error occurred. Please try again later.');
         }
       })
       .finally(() => {
@@ -87,31 +87,31 @@ const Login = ({ navigation }) => {
   };
   const handleLogin = () => {
     const isValid = validateInput();
-    if (!(isValid === "valid")) {
+    if (!(isValid === 'valid')) {
       return alert(isValid);
     }
     setLoading(true);
     signInWithEmailAndPassword(auth, email, password)
-      .then((response) => {
-        console.log("logged in user", response.user);
+      .then(response => {
+        console.log('logged in user', response.user);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err.code);
         switch (err.code) {
-          case "auth/invalid-email":
-            alert("Invalid email address.");
+          case 'auth/invalid-email':
+            alert('Invalid email address.');
             break;
-          case "auth/user-disabled":
-            alert("User account has been disabled.");
+          case 'auth/user-disabled':
+            alert('User account has been disabled.');
             break;
-          case "auth/user-not-found":
-            alert("Please register before sign-in.");
+          case 'auth/user-not-found':
+            alert('Please register before sign-in.');
             break;
-          case "auth/wrong-password":
-            alert("Invalid password.");
+          case 'auth/wrong-password':
+            alert('Invalid password.');
             break;
           default:
-            alert("An error occurred. Please try again later.");
+            alert('An error occurred. Please try again later.');
         }
       })
       .finally(() => {
@@ -123,14 +123,18 @@ const Login = ({ navigation }) => {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
+          color={COLOURS.black}
           placeholder="Enter email"
+          placeholderTextColor={COLOURS.backgroundDark}
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
         />
         <TextInput
           style={styles.input}
+          color={COLOURS.black}
           placeholder="Enter Password"
+          placeholderTextColor={COLOURS.backgroundDark}
           secureTextEntry
           value={password}
           onChangeText={setPassword}
@@ -142,14 +146,13 @@ const Login = ({ navigation }) => {
         </Pressable>
         <Pressable
           style={[styles.button, styles.buttonOutline]}
-          onPress={handleRegister}
-        >
+          onPress={handleRegister}>
           <Text style={[styles.buttonText, styles.buttonOutlineText]}>
             Register
           </Text>
         </Pressable>
       </View>
-      {loading && <ActivityIndicator style={{ marginTop: 20 }} />}
+      {loading && <ActivityIndicator style={{marginTop: 20}} />}
     </View>
   );
 };
@@ -157,8 +160,8 @@ const Login = ({ navigation }) => {
 export default Login;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: "center", justifyContent: "center" },
-  inputContainer: { width: "80%" },
+  container: {flex: 1, alignItems: 'center', justifyContent: 'center'},
+  inputContainer: {width: '80%'},
   input: {
     backgroundColor: COLOURS.white,
     marginTop: 6,
@@ -166,11 +169,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderRadius: 10,
     fontSize: 12,
-    fontWeight: "400",
+    fontWeight: '400',
   },
   buttonsContainer: {
     marginTop: 35,
-    width: "60%",
+    width: '60%',
   },
   button: {
     backgroundColor: COLOURS.blue,
@@ -178,11 +181,11 @@ const styles = StyleSheet.create({
     padding: 14,
     marginTop: 5,
   },
-  buttonText: { color: COLOURS.white, fontSize: 16, fontWeight: "700" },
+  buttonText: {color: COLOURS.white, fontSize: 16, fontWeight: '700'},
   buttonOutline: {
     backgroundColor: COLOURS.white,
     borderColor: COLOURS.blue,
     borderWidth: 2,
   },
-  buttonOutlineText: { color: COLOURS.blue },
+  buttonOutlineText: {color: COLOURS.blue},
 });

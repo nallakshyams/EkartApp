@@ -1,12 +1,11 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import MyCart from "./components/screens/MyCart";
-import Home from "./components/screens/Home";
-import ProductInfo from "./components/screens/ProductInfo";
-import Login from "./components/screens/Login";
-import { ProductProvider } from "./components/data/products";
+import MyCart from "./components/screens/MyCart.js";
+import Home from "./components/screens/Home.js";
+import ProductInfo from "./components/screens/ProductInfo.js";
+import Login from "./components/screens/Login.js";
+import { ProductProvider } from "./components/data/products.js";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
