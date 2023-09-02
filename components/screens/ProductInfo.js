@@ -107,7 +107,7 @@ const ProductInfo = ({route, navigation}) => {
               backgroundColor: COLOURS.backgroundLight,
               width: '100%',
               flexDirection: 'row',
-              paddingTop: 16,
+              paddingTop: 12,
               paddingLeft: 16,
             }}>
             <Pressable

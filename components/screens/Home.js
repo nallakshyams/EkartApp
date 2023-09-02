@@ -132,13 +132,21 @@ const Home = ({navigation}) => {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
+              justifyContent: 'center',
             }}>
-            <Text style={{fontSize: 18, fontWeight: 500, letterSpacing: 1}}>
+            <Text
+              style={{
+                fontSize: 18,
+                color: COLOURS.black,
+                fontWeight: 500,
+                letterSpacing: 1,
+              }}>
               {category}
             </Text>
             <Text
               style={{
                 fontSize: 14,
+                color: COLOURS.black,
                 fontWeight: 400,
                 marginLeft: 10,
                 opacity: 0.5,
@@ -206,7 +214,8 @@ const Home = ({navigation}) => {
             width: '100%',
             flexDirection: 'row',
             justifyContent: 'space-between',
-            padding: 16,
+            paddingHorizontal: 16,
+            paddingVertical: 12,
           }}>
           <Pressable onPress={signOut}>
             <MaterialCommunityIcons

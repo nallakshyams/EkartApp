@@ -114,10 +114,20 @@ const MyCart = ({navigation}) => {
             {prod.productName}
           </Text>
           <View style={{flexDirection: 'row', opacity: 0.6}}>
-            <Text style={{fontSize: 14, fontWeight: '400'}}>
+            <Text
+              style={{
+                fontSize: 14,
+                color: COLOURS.backgroundDark,
+                fontWeight: '400',
+              }}>
               {prod.productPrice}
             </Text>
-            <Text style={{fontSize: 14, fontWeight: '400'}}>
+            <Text
+              style={{
+                fontSize: 14,
+                color: COLOURS.backgroundDark,
+                fontWeight: '400',
+              }}>
               (~₹{prod.productPrice + prod.productPrice * 0.02})
             </Text>
           </View>
@@ -150,7 +160,10 @@ const MyCart = ({navigation}) => {
                     color: COLOURS.backgroundDark,
                   }}></MaterialCommunityIcons>
               </View>
-              <Text style={{paddingVertical: 4}}> 1 </Text>
+              <Text style={{paddingVertical: 4, color: COLOURS.black}}>
+                {' '}
+                1{' '}
+              </Text>
               <View
                 style={{
                   borderColor: COLOURS.backgroundMedium,
@@ -329,7 +342,7 @@ const MyCart = ({navigation}) => {
             alignItems: 'center',
             width: '100%',
             height: 50,
-            marginTop: 25,
+            marginTop: 16,
           }}>
           <Pressable
             onPress={navigation.goBack}
