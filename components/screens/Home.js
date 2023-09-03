@@ -12,6 +12,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import auth from '@react-native-firebase/auth';
 import {useProductContext} from '../data/products';
+import {logEvent} from '../firebase/myfirebase';
 const headerText = `Electronic Shoppe`;
 const subHeaderText = `Electronic shop in Hyderabad. 
 This shop offers both laptops and mobiles`;
@@ -21,6 +22,7 @@ const Home = ({navigation}) => {
   const [mobiles, setMobiles] = useState([]);
   const {productList} = useProductContext();
   useEffect(() => {
+    logEvent('HomePage');
     getData();
   }, [navigation, productList]);
   const getData = () => {
@@ -41,9 +43,10 @@ const Home = ({navigation}) => {
     return (
       <Pressable
         style={{marginTop: 12, width: '48%'}}
-        onPress={() =>
-          navigation.navigate('ProductInfo', {productID: data.id})
-        }>
+        onPress={() => {
+          logEvent('ProductClick', {...data});
+          navigation.navigate('ProductInfo', {productID: data.id});
+        }}>
         <View
           style={{
             width: '100%',
@@ -175,6 +178,7 @@ const Home = ({navigation}) => {
     );
   };
   const signOut = () => {
+    logEvent('SignOutClick');
     auth()
       .signOut()
       .then(() => {
@@ -226,7 +230,11 @@ const Home = ({navigation}) => {
               }}
             />
           </Pressable>
-          <Pressable onPress={() => navigation.navigate('MyCart')}>
+          <Pressable
+            onPress={() => {
+              logEvent('CartClick');
+              navigation.navigate('MyCart');
+            }}>
             <MaterialCommunityIcons
               name="cart"
               style={{

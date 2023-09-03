@@ -13,11 +13,13 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useProductContext} from '../data/products';
+import {logEvent} from '../firebase/myfirebase';
 const MyCart = ({navigation}) => {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState();
   const {productList} = useProductContext();
   useEffect(() => {
+    logEvent('CartPage');
     const unsubscribe = navigation.addListener('focus', () => {
       getDataFromDB();
     });
@@ -62,6 +64,7 @@ const MyCart = ({navigation}) => {
     getDataFromDB();
   };
   const checkOut = async () => {
+    logEvent('CheckOutClick');
     console.log('checked out');
     await AsyncStorage.removeItem('CartItems');
     ToastAndroid.show(
@@ -81,6 +84,7 @@ const MyCart = ({navigation}) => {
           width: '100%',
         }}
         onPress={() => {
+          logEvent('ProductClickInCartPage', {...prod});
           navigation.navigate('ProductInfo', {productID: prod.id});
         }}>
         <View
@@ -187,6 +191,7 @@ const MyCart = ({navigation}) => {
             </View>
             <Pressable
               onPress={() => {
+                logEvent('RemoveItemFromCartClick', {...prod});
                 removeItemFromCart(prod.id);
               }}
               style={{
@@ -347,7 +352,10 @@ const MyCart = ({navigation}) => {
             marginTop: 16,
           }}>
           <Pressable
-            onPress={navigation.goBack}
+            onPress={() => {
+              logEvent('CartBackClick');
+              navigation.goBack('Home');
+            }}
             style={{
               backgroundColor: COLOURS.backgroundLight,
               borderRadius: 12,

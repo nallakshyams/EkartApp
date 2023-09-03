@@ -15,6 +15,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useProductContext} from '../data/products';
+import {logEvent} from '../firebase/myfirebase';
 //import { Toast } from "react-native-toast-message/lib/src/Toast";
 
 const ProductInfo = ({route, navigation}) => {
@@ -24,6 +25,7 @@ const ProductInfo = ({route, navigation}) => {
   const {productID} = route.params;
   const [product, setProduct] = useState({});
   useEffect(() => {
+    logEvent('ProductInfoPage');
     const unsubscribe = navigation.addListener('focus', () => {
       getData();
     });
@@ -112,6 +114,7 @@ const ProductInfo = ({route, navigation}) => {
             }}>
             <Pressable
               onPress={() => {
+                logEvent('ProductInfoBackClick');
                 navigation.goBack('Home');
               }}>
               <Entypo
@@ -277,7 +280,10 @@ const ProductInfo = ({route, navigation}) => {
           height: '8%',
         }}>
         <Pressable
-          onPress={() => (product.isAvailable ? addToCart(product.id) : null)}
+          onPress={() => {
+            logEvent('AddToCartClick', {...product});
+            product.isAvailable ? addToCart(product.id) : null;
+          }}
           style={{
             backgroundColor: COLOURS.blue,
             width: '86%',

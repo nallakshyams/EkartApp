@@ -10,6 +10,7 @@ import {
 import React, {useEffect, useState} from 'react';
 import {COLOURS} from '../data/data';
 import auth from '@react-native-firebase/auth';
+import {logEvent} from '../firebase/myfirebase';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -18,6 +19,7 @@ const Login = ({navigation}) => {
 
   //set listener for the first time when the component renders
   useEffect(() => {
+    logEvent('LoginPage');
     const unsubscribe = auth().onAuthStateChanged(user => {
       navigation.addListener('focus', () => {
         setEmail('');
@@ -52,6 +54,9 @@ const Login = ({navigation}) => {
   };
 
   const handleRegister = () => {
+    logEvent('RegistrationClick', {
+      email: email,
+    });
     const isValid = validateInput();
     if (!(isValid === 'valid')) {
       return alert(isValid);
@@ -82,6 +87,9 @@ const Login = ({navigation}) => {
       });
   };
   const handleLogin = () => {
+    logEvent('LoginClick', {
+      email: email,
+    });
     const isValid = validateInput();
     if (!(isValid === 'valid')) {
       return alert(isValid);
