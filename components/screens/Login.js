@@ -9,19 +9,16 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {COLOURS} from '../data/data';
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from 'firebase/auth';
-import auth from '../firebase/myfirebase';
+import auth from '@react-native-firebase/auth';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+
+  //set listener for the first time when the component renders
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, user => {
+    const unsubscribe = auth().onAuthStateChanged(user => {
       navigation.addListener('focus', () => {
         setEmail('');
         setPassword('');
@@ -32,10 +29,7 @@ const Login = ({navigation}) => {
         console.log('signed out successfully');
       }
     });
-
-    return () => {
-      unsubscribe();
-    };
+    return unsubscribe;
   }, []);
 
   const validateEmail = () => {
@@ -63,7 +57,8 @@ const Login = ({navigation}) => {
       return alert(isValid);
     }
     setLoading(true);
-    createUserWithEmailAndPassword(auth, email, password)
+    auth()
+      .createUserWithEmailAndPassword(email, password)
       .then(response => {
         console.log('registered user', response.user);
       })
@@ -92,7 +87,8 @@ const Login = ({navigation}) => {
       return alert(isValid);
     }
     setLoading(true);
-    signInWithEmailAndPassword(auth, email, password)
+    auth()
+      .signInWithEmailAndPassword(email, password)
       .then(response => {
         console.log('logged in user', response.user);
       })

@@ -10,7 +10,7 @@ import React, {useEffect, useState} from 'react';
 import {COLOURS} from '../data/data';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import auth from '../firebase/myfirebase';
+import auth from '@react-native-firebase/auth';
 import {useProductContext} from '../data/products';
 const headerText = `Electronic Shoppe`;
 const subHeaderText = `Electronic shop in Hyderabad. 
@@ -21,11 +21,8 @@ const Home = ({navigation}) => {
   const [mobiles, setMobiles] = useState([]);
   const {productList} = useProductContext();
   useEffect(() => {
-    const unregister = navigation.addListener('focus', () => {
-      getData();
-    });
-    return unregister;
-  }, [navigation]);
+    getData();
+  }, [navigation, productList]);
   const getData = () => {
     const laps = [];
     const mobs = [];
@@ -178,7 +175,7 @@ const Home = ({navigation}) => {
     );
   };
   const signOut = () => {
-    auth
+    auth()
       .signOut()
       .then(() => {
         navigation.navigate('Login');
