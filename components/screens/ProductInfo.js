@@ -185,7 +185,6 @@ const ProductInfo = ({route, navigation}) => {
               opacity: 0.5,
               lineHeight: 20,
               maxWidth: '85%',
-              maxHeight: 44,
               marginBottom: 8,
             }}>
             {product.description}
