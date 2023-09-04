@@ -1,79 +1,41 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# EKart
+This is a sample e-commerce application developed in React Native. It utilizes core components such as View, ScrollView, Toast, FlatList, and libraries like AsyncStorage, navigation, push notifications, analytics, and persistent authentication state etc.
 
-# Getting Started
+### Steps to run:
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+1. Install Node.js, npm , JDK, Android Studio, Android SDK.
 
-## Step 1: Start the Metro Server
+2. Clone the Repository
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+3. Navigate to the Project Directory
 
-To start Metro, run the following command from the _root_ of your React Native project:
+4. Install Dependencies using the command 'npm install'
 
-```bash
-# using npm
-npm start
+5. Start the Project using the command 'npx react-native run-android'
 
-# OR using Yarn
-yarn start
-```
+6. Connect your Android device to your computer or install an Android emulator on your machine to enable automatic app launching.
 
-## Step 2: Start your Application
+### Screen shots:
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+#### 1. Login(firebase)
+   
+   <img src="https://github.com/nallakshyams/EKart/assets/24761241/2403757e-5e51-4e25-b0ff-0e846be334ae)" alt="Login" width="300">
 
-### For Android
+#### 2. Products list
 
-```bash
-# using npm
-npm run android
+   <img src="https://github.com/nallakshyams/EKart/assets/24761241/71d1b556-286d-4787-98b5-4ed52756c9a0" alt="product list" width="300">
 
-# OR using Yarn
-yarn android
-```
+#### 3. Product details
 
-### For iOS
+   <img src="https://github.com/nallakshyams/EKart/assets/24761241/7979ffd1-1c27-4936-acc2-c73ea7d1b112" alt="product details" width="300">
 
-```bash
-# using npm
-npm run ios
+#### 4. Cart1
 
-# OR using Yarn
-yarn ios
-```
+   <img src="https://github.com/nallakshyams/EKart/assets/24761241/0ef2bb42-0196-439e-9ba5-2deaea5036a8" alt="cart1" width="300">
+   
+#### 5. Cart2
+   
+   <img src="https://github.com/nallakshyams/EKart/assets/24761241/3ec17ff1-60b7-4222-8496-8a5fe9c0b29a" alt="cart2" width="300">
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
