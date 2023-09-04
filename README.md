@@ -1,4 +1,4 @@
-# EKart
+# EKartApp
 This is a sample e-commerce application developed in React Native. It utilizes core components such as View, ScrollView, Toast, FlatList, and libraries like AsyncStorage, navigation, push notifications, analytics, and persistent authentication state etc.
 
 ### Steps to run:
