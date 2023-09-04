@@ -3,7 +3,7 @@ This is a sample e-commerce application developed in React Native. It utilizes c
 
 ### Steps to run:
 
-1. Install Node.js, npm , JDK, Android Studio, Android SDK.
+1. Install Node.js, npm, JDK, Android Studio, and the Android SDK. For more information, please visit: [React Native Environment Setup](https://reactnative.dev/docs/environment-setup)
 
 2. Clone the Repository
 
@@ -36,6 +36,17 @@ This is a sample e-commerce application developed in React Native. It utilizes c
 #### 5. Cart2
    
    <img src="https://github.com/nallakshyams/EKart/assets/24761241/3ec17ff1-60b7-4222-8496-8a5fe9c0b29a" alt="cart2" width="300">
+
+#### 6. Notifications
+
+<img src="https://github.com/nallakshyams/EkartApp/assets/24761241/44bcdcc3-92a0-4df1-beea-3be23e692065" alt="notifications" width="300">
+
+#### 7. Analytics
+
+<img src="https://github.com/nallakshyams/EkartApp/assets/24761241/b64ecd90-1ffd-46f4-80fd-2a7548821145" alt="analytics" width="600">
+
+
+
 
 
 
